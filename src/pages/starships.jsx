@@ -15,15 +15,15 @@ const data = [
 const columns = Object.keys(data[0]);
 
 function StarPage() {
-  const [people, setPeople] = useState(data);
-  console.log(people);
+  const [star, setStar] = useState(data);
+  console.log(star);
 
-  const handleAppPerson = (personData) => {
-    const data = [...people, personData];
-    setPeople(data);
+  const handleAppPerson = (starData) => {
+    const data = [...star, starData];
+    setStar(data);
   };
 
-  const getInitialPeopleData = () => {
+  const getInitialStarData = () => {
     return columns.reduce((cols, columnName) => {
       cols[columnName] = "";
       return cols;
@@ -31,21 +31,21 @@ function StarPage() {
   };
 
   const buttonDelete = (item) => {
-    setPeople(people.filter((man) => item !== man));
+    setStar(star.filter((man) => item !== man));
   };
 
   return (
     <div className="container">
       {
         <Table
-          data={people}
+          data={star}
           columns={columns}
           tableDescriptor="Starships"
           buttonDelete={buttonDelete}
         />
       }
       <Form
-        initialData={getInitialPeopleData()}
+        initialData={getInitialStarData()}
         columns={columns}
         onAddData={handleAppPerson}
       />

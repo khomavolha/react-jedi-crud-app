@@ -10,15 +10,15 @@ const data = [
 const columns = Object.keys(data[0]);
 
 function PlanetPage() {
-  const [people, setPeople] = useState(data);
-  console.log(people);
+  const [planet, setPlanet] = useState(data);
 
-  const handleAppPerson = (personData) => {
-    const data = [...people, personData];
-    setPeople(data);
+
+  const handleAppPlanet = (planetData) => {
+    const data = [...planet, planetData];
+    setPlanet(data);
   };
 
-  const getInitialPeopleData = () => {
+  const getInitialPlanetData = () => {
     return columns.reduce((cols, columnName) => {
       cols[columnName] = "";
       return cols;
@@ -26,23 +26,23 @@ function PlanetPage() {
   };
 
   const buttonDelete = (item) => {
-    setPeople(people.filter((man) => item !== man));
+    setPlanet(planet.filter((man) => item !== man));
   };
 
   return (
     <div className="container">
       {(
         <Table
-          data={people}
+          data={planet}
           columns={columns}
           tableDescriptor="Planet"
           buttonDelete={buttonDelete}
         />
       )}
       <Form
-        initialData={getInitialPeopleData()}
+        initialData={getInitialPlanetData()}
         columns={columns}
-        onAddData={handleAppPerson}
+        onAddData={handleAppPlanet}
       />
     </div>
   );
